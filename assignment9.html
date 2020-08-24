@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <title>코코아 클론 2주 완성반: Assignment 9</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+      #bigbox {
+        background: linear-gradient(to bottom, #3c3b3f, #605c3c);
+        border: 5px solid #00cd3c;
+        border-radius: 35px;
+        width: 415px;
+        height: 710px;
+      }
+      #title-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 415px;
+        height: 90px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 25px;
+        text-align: center;
+        font-weight: 700;
+        color: #e0e1e3;
+      }
+      #title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 70px;
+      }
+      .blank1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 70px;
+      }
+
+      #playing-music-box {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 415px;
+        height: 150px;
+      }
+
+      .album-art {
+        border: 2px solid #e0e1e3;
+        border-radius: 15px;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0px 0px 9px #e0e1e3;
+      }
+      .music-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: left;
+        width: 250px;
+        height: 55px;
+      }
+      .song-title {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #e0e1e3;
+      }
+
+      .artist {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        color: #e0e1e3;
+      }
+
+      .now-playing-art {
+        width: 125px;
+        height: 125px;
+        background-color: #ffbd11;
+      }
+      .now-playing-info {
+        width: 195px;
+        height: 125px;
+      }
+      .now-playing-title {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 26px;
+        font-weight: 900;
+        text-align: left;
+        color: #e0e1e3;
+      }
+      .now-playing-artist {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: #e0e1e3;
+      }
+
+      #btn-box {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 415px;
+        height: 100px;
+        color: #e0e1e3;
+      }
+      #play-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #e0e1e3;
+        border-radius: 15px;
+        width: 160px;
+        height: 55px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 25px;
+        font-weight: 900;
+        color: #e0e1e3;
+        box-shadow: 2px 3px 1px #e0e1e3;
+      }
+      .blank2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 55px;
+      }
+      .blank3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45px;
+        height: 55px;
+      }
+      .circle-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #e0e1e3;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        box-shadow: 2px 3px 1px #e0e1e3;
+      }
+      #like-btn {
+        color: tomato;
+      }
+
+      #playlist-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 415px;
+        height: 360px;
+      }
+
+      .list-outline {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: stretch;
+        width: 415px;
+        height: 60px;
+      }
+
+      #music1 > .album-art {
+        background-color: #f85a2a;
+      }
+      #music2 > .album-art {
+        background-color: #ff89bb;
+      }
+      #music3 > .album-art {
+        background-color: #1847e5;
+      }
+      #music4 > .album-art {
+        background-color: #00c6ad;
+      }
+      footer {
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 300;
+        color: #e0e1e3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bigbox">
+      <div id="title-bar">
+        <div class="blank1">
+          <i class="fas fa-times"></i>
+        </div>
+        <span id="title">Playlist</span>
+        <div class="blank1"></div>
+      </div>
+      <div id="playing-music-box">
+        <img
+          class="album-art now-playing-art"
+          src="https://cdnimg.melon.co.kr/cm2/album/images/104/62/799/10462799_20200717150822_1000.jpg?adcaec1a0d99e7a379c098d31dca68da/melon/quality/80/optimize"
+        />
+        <div class="music-info now-playing-info">
+          <div class="song-title now-playing-title">
+            <span>다시 여기 바닷가</span>
+          </div>
+          <div class="artist now-playing-artist">
+            <span>by 싹쓰리 (유두래곤, 린다G, 비룡)</span>
+          </div>
+        </div>
+      </div>
+      <div id="btn-box">
+        <div id="play-btn">
+          <span class="blank2">Play</span>
+          <div class="blank3">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div id="like-btn" class="circle-btn">
+          <i class="fas fa-heart fa-2x"></i>
+        </div>
+        <div id="add-btn" class="circle-btn">
+          <i class="fas fa-plus fa-2x"></i>
+        </div>
+      </div>
+      <div id="playlist-box">
+        <div id="music1" class="list-outline">
+          <img
+            class="album-art"
+            src="https://cdnimg.melon.co.kr/cm2/album/images/104/53/701/10453701_20200701151802_1000.jpg?3227cd4705925dadb0cef129b25c856a"
+          />
+          <div class="music-info">
+            <div class="song-title">
+              <span>RANDOM BOX</span>
+            </div>
+            <div class="artist">
+              <span>by 지코 (ZICO)</span>
+            </div>
+          </div>
+        </div>
+        <div id="music2" class="list-outline">
+          <img
+            class="album-art"
+            src="https://cdnimg.melon.co.kr/cm2/album/images/104/23/289/10423289_20200427153909_1000.jpg?33a9f621c154722d51621a0ba45dd402/melon/quality/80/optimize"
+          />
+          <div class="music-info">
+            <div class="song-title">
+              <span>살짝 설렜어 (Nonstop)</span>
+            </div>
+            <div class="artist">
+              <span>by 오마이걸</span>
+            </div>
+          </div>
+        </div>
+        <div id="music3" class="list-outline">
+          <img
+            class="album-art"
+            src="https://cdnimg.melon.co.kr/cm2/album/images/104/26/648/10426648_20200506153340_1000.jpg?0ed92b652a9149e26387233529a32781/melon/quality/80/optimize"
+          />
+          <div class="music-info">
+            <div class="song-title">
+              <span>에잇</span>
+            </div>
+            <div class="artist">
+              <span>by 아이유</span>
+            </div>
+          </div>
+        </div>
+        <div id="music4" class="list-outline">
+          <img
+            class="album-art"
+            src="https://cdnimg.melon.co.kr/cm2/album/images/104/52/354/10452354_20200629152048_1000.jpg?caffa585c102f1474ce0e9377d49b97d/melon/quality/80/optimize"
+          />
+          <div class="music-info">
+            <div class="song-title">
+              <span>보라빛 밤 (pporappippam)</span>
+            </div>
+            <div class="artist">
+              <span>by 선미</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><br />&copy; adoredia</footer>
+  </body>
+</html>
